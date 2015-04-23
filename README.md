@@ -1,4 +1,3 @@
-# node-js-exercises
 NodeJS exercises
 ================
 
