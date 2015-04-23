@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>ToDo List</title>
+<meta name="viewport"
+content="user-scalable=no,initial-scale=1.0,maximum-scale=1.0" />
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<link rel="stylesheet" href="css/jquery.mobile.css" />
+<link rel="stylesheet" href="css/todo.css" />
+<script src="js/jquery.js"></script>
+<script src="js/jquery.mobile.js"></script>
+<script src="js/underscore.js"></script>
+<script src="js/backbone.js"></script>
+<script src="js/todo.js"></script>
+<script src="js/iscroll.js"></script>
+</head> 
+<body> 
+<div id="main" data-role="page">
+  <div data-role="header" data-position="fixed" data-theme="b">
+  <h1>Todo List Sign Up</h1>
+  </div>
+
+  <div data-role="content"> 
+ 
+  <form action="/users" method="post" class="signup form-horizontal">
+  <div class="control-group">
+    <label for="name" class="control-label">Full name</label>
+    <div class="controls">
+      <input id="name" type="text" name="name" placeholder="Full name"/>
+    </div>
+  </div>
+  <div class="control-group">
+    <label for="email" class="control-label">Email</label>
+    <div class="controls">
+      <input id="email" type="text" name="email" placeholder="Email"/>
+    </div>
+  </div>
+  <div class="control-group">
+    <label for="username" class="control-label">Username</label>
+    <div class="controls">
+      <input id="username" type="text" name="username" placeholder="Username"/>
+    </div>
+  </div>
+  <div class="control-group">
+    <label for="password" class="control-label">Password</label>
+    <div class="controls">
+      <input id="password" type="password" name="password" placeholder="Password"/>
+    </div>
+  </div>
+  <div class="form-actions">
+    <button type="submit" class="btn btn-primary">Sign up</button>&nbsp;
+    or&nbsp;<a href="/login.html" class="show-login">login</a>
+  </div>
+</form>
+<!-- /Login form end-->
+
+<br /><br />
+
+
+<!--Content end-->
+
+</div><!-- /page -->
+
+</div>
+
+</body>
+</html>
+</html>

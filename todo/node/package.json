@@ -1,0 +1,14 @@
+{
+  "name": "todo",
+  "main": "db-server.js",
+  "dependencies" : {
+    "express" : "latest", 			
+    "ejs" : "latest",	
+    "passport-local" : "latest", 	
+    "passport-facebook" : "latest", 
+    "passport-twitter" : "latest", 	
+    "passport-google-oauth" : "latest",
+    "connect-flash" : "latest", 	
+    "bcrypt-nodejs" : "latest" 	
+  }
+}

@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>ToDo List</title>
+<meta name="viewport"
+content="user-scalable=no,initial-scale=1.0,maximum-scale=1.0" />
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<link rel="stylesheet" href="css/jquery.mobile.css" />
+<link rel="stylesheet" href="css/todo.css" />
+<script src="js/jquery.js"></script>
+<script src="js/jquery.mobile.js"></script>
+<script src="js/underscore.js"></script>
+<script src="js/backbone.js"></script>
+<script src="js/todo.js"></script>
+<script src="js/iscroll.js"></script>
+<script>
+$(document).on('vclick', '.small', function(e){
+    $(".txtwrapper").css('font-size', '15px');
+    $(".tm").css('font-size', '15px');
+    $('#settingback').click();
+});
+
+$(document).on('vclick', '.med', function(e){
+    $(".txtwrapper").css('font-size', '20px');
+    $(".tm").css('font-size', '20px');
+    $('#settingback').click();
+});
+
+$(document).on('vclick', '.large', function(e){
+    $(".txtwrapper").css('font-size', '25px');
+    $(".tm").css('font-size', '25px');
+   $('#settingback').click();
+});
+</script>
+</head> 
+<body>
+
+<div id="main" data-role="page" class="txtwrapper">
+  <div data-role="header" data-position="fixed" data-theme="b">
+    <a href="#popupNested" data-rel="popup" data-role="button" data-inline="true" aria-haspopup="true" aria-owns="popupNested" aria-expanded="false" class="ui-link ui-icon-grid ui-btn-icon-left ui-btn ui-btn-inline ui-shadow ui-corner-all" role="button">Menu</a>
+
+  <h1>Todo</h1>
+  <!-- <a id="add" data-icon="plus" class="ui-btn-right">Add</a> -->
+  <a href="#myPopup" data-icon="plus" data-rel="popup" data-transition="slide"  class="ui-btn-right ui-btn-inline ui-corner-all ui-icon-check ui-btn-icon-left">Add</a>
+ </div>
+
+ <div id="listTemplate">
+ <div data-role="content">
+ 
+  <ul id="list" data-role="listview">
+   <li class="tm ui-btn" id='todoitem' data-rel="popup" itemid={{-_id}}>
+    <span class="text">{{-text}}</span>
+   </li>
+   
+  </ul>
+
+   <div data-role="main" class="ui-content">
+    <div data-role="popup" id="myPopup" class="ui-content" data-overlay-theme="b" data-theme="a" style="min-width:250px;">
+     <a href="#" data-rel="back" class="ui-btn ui-corner-all ui-shadow ui-btn ui-icon-delete ui-btn-icon-notext ui-btn-right">Close</a>
+        <div>
+          <h3>Things need to be done</h3>
+          <label for="usrnm" class="ui-hidden-accessible">ToDo:</label>
+          <input id="new-todo" placeholder="To do thing" autofocus>
+         <label for="log">Current location info</label>
+         <input id="latitute" style="display:none">
+         <input id="lontitute" style="display:none">
+         <img id="map" />
+          <p id="msg"></p>
+       
+        </div>
+          <a id="add" data-role="button" data-icon="check" data-inline="true" data-theme="b">Save</a>
+        </div> 
+    </div>
+    <div data-role="main" class="ui-content">
+    <div data-role="popup" id="myupdatePopup" class="ui-content" data-overlay-theme="b" data-theme="a" style="min-width:250px;">
+     <a href="#" data-rel="back" class="ui-btn ui-corner-all ui-shadow ui-btn ui-icon-delete ui-btn-icon-notext ui-btn-right">Close</a>
+        <div>
+          <h3>Update your to do list</h3>
+          <label for="usrnm" class="ui-hidden-accessible">ToDo:</label>
+          <input id="upnew-todo" placeholder="To do thing" autofocus>
+         <label for="log">Current location info</label>
+         <input id="uplatitute" style="display:none">
+         <input id="uplontitute" style="display:none">
+         <img id="mapup"/>
+          <p id="msgup"></p>
+       
+        </div>
+          <a id="update" data-role="button" data-icon="check" data-inline="true" data-theme="b">Update</a>
+          <a id="delete" data-role="button" data-icon="delete" data-inline="true" data-theme="b">Detele</a>
+        </div> 
+    </div>
+    <div data-role="main" class="ui-content">
+      <div class="ui-popup-container ui-popup-hidden ui-popup-truncate" id="popupNested-popup"><div data-role="popup" id="popupNested" data-theme="none" class="ui-popup ui-overlay-shadow ui-corner-all">
+      <div data-role="collapsible-set" data-theme="b" data-content-theme="a" data-collapsed-icon="arrow-r" data-expanded-icon="arrow-d" style="margin:0; width:250px;" class="ui-collapsible-set ui-group-theme-b ui-corner-all">
+      <ul data-role="listview" class="ui-listview">
+            <li class="ui-first-child"><a href="userprofile.html" data-ajax="false" class="ui-btn ui-btn-icon-right ui-icon-carat-r">User Profile</a></li>
+            <li><a href="#settings" id="setting" class="ui-btn ui-btn-icon-right ui-icon-carat-r">Setting</a></li>
+            <li><a href="" id="logout" class="ui-btn ui-btn-icon-right ui-icon-carat-r">Logout</a></li>
+          </ul>
+      </div>
+    </div></div>
+
+  </div>
+  </div>
+ </div>
+
+</div>
+<div id="settings" data-role="page">
+<div data-role="header" data-position="fixed" data-theme="b">
+                <a href="#" id="settingback" data-rel="back" data-icon="back">Back</a>
+                <h1>Font Setting</h1>
+            </div>
+            <div data-role="content">
+                <ul data-role="listview">
+                    <li><a href="#" class="small">Small</a></li>    
+                    <li><a href="#" class="med">Medium</a></li>    
+                    <li><a href="#" class="large">Large</a></li>    
+                </ul>
+            </div>
+    </div>
+<script>
+var img = document.getElementById('map');
+var msg = document.getElementById('msg');
+var imgup = document.getElementById('mapup');
+var msgup = document.getElementById('msgup');
+navigator.geolocation.getCurrentPosition(
+  function(position){
+    var latitude  = position.coords.latitude;
+    var longitude = position.coords.longitude;
+    var timestamp = new Date(position.timestamp);
+    msg.innerHTML = 
+      'Latitude:  '+latitude+'<br />'+
+      'Longitude: '+longitude+'<br />'
+    $('#latitute').val(latitude);
+    $('#lontitute').val(longitude);
+    img.src = 
+      "http://maps.google.com/maps/api/staticmap?sensor=true&"+
+      "center="+latitude+","+longitude+
+      "&zoom=14&size=300x200&markers=color:red|"+
+      latitude+","+longitude;
+      msg.innerHTML = 
+      'Latitude:  '+latitude+'<br />'+
+      'Longitude: '+longitude+'<br />'
+    $('#uplatitute').val(latitude);
+    $('#uplontitute').val(longitude);
+    imgup.src = 
+      "http://maps.google.com/maps/api/staticmap?sensor=true&"+
+      "center="+latitude+","+longitude+
+      "&zoom=14&size=300x200&markers=color:red|"+
+      latitude+","+longitude;
+  },
+  function(error){
+    var txt;
+    switch(error.code) {
+      case error.PERMISSION_DENIED:    txt = 'Permission denied'; break;
+      case error.POSITION_UNAVAILABLE: txt = 'Position unavailable'; break;
+      case error.TIMEOUT:              txt = 'Position lookup timed out'; break;
+      default: txt = 'Unknown position.'
+    }
+    msg.innerHTML = txt;
+  }
+);
+</script>
+</body>
+</html>
+
